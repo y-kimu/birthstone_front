@@ -1,1 +1,980 @@
 
+@charset "UTF-8";
+/* ----------------------------------
+    reset
+----------------------------------- */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+  all: unset;
+  display: revert;
+}
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+  *::before,
+  *::after { 
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 16px;
+  }  
+  body,h1,h2,h3,h4,h5{
+    margin: 0px;
+    padding: 0px;
+    font-weight: normal;
+  }
+  body {
+    color: #000000;
+    background-color: #ffffff;
+    font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif;
+    line-height: 1.3;
+    font-size: 16px;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  img {
+    max-width: 100%;
+    height: auto; 
+  }
+  table {
+    border-collapse: collapse;
+  }
+  a{
+    cursor: pointer;
+  }
+
+  input[type=text],
+  input[type=tel],
+  input[type=email],
+  input[type=esubmit],
+  button,
+  select,
+  textarea {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+  }
+
+/* ----------------------------------
+    基本レイアウト
+----------------------------------- */
+#wrapper {
+  overflow: hidden;
+}
+.bg_prallax {
+  background-image: url("../img/backimage.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center bottom;
+  background-size: cover;
+}
+.main_width {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.narrow_width {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.home_section {
+  padding-bottom: 140px;
+}
+
+/* ----------------------------------
+    共通パーツ
+----------------------------------- */
+.section_title {
+  margin-bottom: 80px;
+}
+.section_title h3 {
+  font-size: 24px;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.section_title p {
+  font-size: 40px;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+/* 誕生石別の色 */
+.color01 {
+  color: #9A1616;
+}
+.color02 {
+  color: #7E5895;
+}
+.color03 {
+  color: #12719C;
+}
+.color04 {
+  color: #212121;
+}
+.color05 {
+  color: #1AA580;
+}
+.color06 {
+  color: #212121;
+}
+.color07 {
+  color: #9A1616;
+}
+.color08 {
+  color: #155C01;
+}
+.color09 {
+  color: #2114D3;
+}
+.color10 {
+  color: #07A7AA;
+}
+.color11 {
+  color: #8E7333;
+}
+.color12 {
+  color: #3954A7;
+}
+
+/* スライダータブ */
+.tab-btn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 38px;
+}
+.tab-btn .btn {
+  flex-basis: 172px;
+  text-align: center;
+}
+.tab-btn .btn + .btn {
+  border-left: 1px solid #acacac;
+}
+.tab-btn .btn a {
+  display: block;
+  position: relative;
+  font-size: 16px;
+  padding: 10px 0 ;
+  transition: 0.4s;
+}
+.tab-btn .btn a:hover {
+  background-color: #c9c9c9;
+  transition: 0.4s;
+}
+.tab-btn .btn a.is-active {
+  color: #fff;
+  background-color: #4A4A4A;
+}
+.tab-contents-item {
+  display: none;
+  width: 100%;
+  justify-content: center;
+}
+.tab-contents-item.is-active {
+  display: flex;
+}
+.tab-contents-item {
+  opacity: 0;
+}
+.tab-contents-item.is-active {
+animation:  fadeinAnime 1.25s forwards;
+}
+@keyframes fadeinAnime{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* スライダー */
+.tab-contents-item .swiper-slide {
+  transition: 0.4s;
+}
+.tab-contents-item .swiper-slide:hover {
+  opacity: 0.75;
+  transition: 0.4s;
+}
+.swiper-slide img {
+  width: 100%;
+  border-radius: 2px;
+}
+.product_text {
+  margin-top: 8px;
+}
+.product_text p {
+  font-size: 16px;
+}
+.product_text p + p {
+  font-size: 12px;
+  margin-top: 0.65em;
+}
+/* スライダーの矢印ボタン */
+.swiper-button-next, .swiper-button-prev {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2E2E2E;
+  color: #fff;
+  top: var(--swiper-navigation-top-offset,156px);
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+  font-size: 16px;
+}
+
+/* ボタン */
+.link_btn {
+  margin: 50px;
+}
+.link_btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  height: 60px;
+  font-size: 16px;
+  color: #fff;
+  background: #2E2E2E;
+  text-align: center;
+  margin: 0 auto;
+  transition: 0.4s;
+}
+.link_btn a:hover {
+  background: #5a5a5a;
+  transition: 0.4s;
+}
+
+/* ----------------------------------
+    ナビ
+----------------------------------- */
+nav {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #ffffff;
+  padding: 10px 0;
+  z-index: 99;
+}
+.nav-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.nav-wrapper .nav_item {
+  width: 16.6666%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: left;
+  height: 68px;
+  transition: all 0.25s;
+}
+.nav-wrapper .nav_item:hover {
+  opacity: 0.65;
+  transition: all 0.25s;
+}
+.nav_item .nav_icon_img {
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(2px 2px 2px #bbbbbb);
+  margin-right: 16px;
+  margin-left: 14px;
+}
+.nav_item .nav_name {
+  font-size: 15px;
+}
+.nav_item .nav_name p + p {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
+/* ----------------------------------
+    first_view
+----------------------------------- */
+#first_view {
+  background-image: url("../img/hero.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+  width: 100%;
+  height: 850px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#first_view .intro_text {
+  text-align: center;
+}
+#first_view .intro_text h4 {
+  font-size: 58px;
+  margin-bottom: 0.4em;
+}
+#first_view .intro_text h1 {
+  font-size: 26px;
+  margin-bottom: 2.6em;
+}
+#first_view .intro_text p {
+  font-size: 15px;
+  line-height: 2.8;
+}
+
+/* ----------------------------------
+    今月の誕生石_１月
+----------------------------------- */
+.birthstone_title .thismonth_icon {
+  width: 170px;
+  margin: auto;
+}
+.birthstone_title .birthstone_name {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.birthstone_title .birthstone_name p {
+  font-size: 92px;
+}
+.birthstone_title .birthstone_name h2 {
+  font-size: 38px;
+}
+.thismonth_description {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+.thismonth_image {
+  width: 350px;
+  margin-right: 142px;
+}
+.birthstone_text {
+  max-width: 504px;
+}
+.birthstone_text h4 {
+  font-size: 16px;
+  position: relative;
+}
+/* 石言葉の下の線 */
+.birthstone_text h4::before {
+  position: absolute;
+  content: "";
+  display: block;
+  border-bottom: 1px solid #A1A1A1;
+  width: 30px;
+  bottom: -10px;
+  left: 0;
+}
+.birthstone_text h3 {
+  font-size: 26px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.birthstone_text p {
+  font-size: 16px;
+  line-height: 2.4;
+}
+
+/* 1月の背景 */
+.product_area {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(250, 119, 119, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area::before {
+  position: absolute; 
+  content: "Garnet";
+  display: block;
+  top: 0;
+  right: 60px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  color: #9A1616;
+  opacity: 0.6;
+}
+.product_area::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 96%;
+  background-color: #9A1616;
+  opacity: 0.4;
+}
+.product_area .pickup:nth-child(n + 2) {
+  margin-top: 154px;
+}
+
+/* 見出し */
+.pickup_title {
+  margin-bottom: 26px;
+  text-align: center;
+}
+.pickup_title h3 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+.pickup_title p {
+  font-size: 26px;
+}
+
+
+/* ----------------------------------
+    2月
+----------------------------------- */
+/* 背景 */
+.product_area_02 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(153, 107, 182, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_02::before {
+  position: absolute; 
+  content: "Amethyst";
+  display: block;
+  top: 0;
+  right: 44px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #7E5895;
+  opacity: 0.6;
+}
+.product_area_02::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 88%;
+  background-color: #7E5895;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_02 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_02_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    3月
+----------------------------------- */
+/* 背景 */
+.product_area_03 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(115, 236, 238, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_03::before {
+  position: absolute; 
+  content: "Aquamarine";
+  display: block;
+  top: 0;
+  right: 28px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #07A7AA;
+  opacity: 0.6;
+}
+.product_area_03::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 86%;
+  background-color: #07A7AA;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_03 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_03_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    4月
+----------------------------------- */
+/* 背景 */
+.product_area_04 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(165, 165, 165, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_04::before {
+  position: absolute; 
+  content: "Diamond";
+  display: block;
+  top: 0;
+  right: 46px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #212121;
+  opacity: 0.6;
+}
+.product_area_04::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 88%;
+  background-color: #212121;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_04 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_04_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    5月
+----------------------------------- */
+/* 背景 */
+.product_area_05 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(93, 216, 183, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_05::before {
+  position: absolute; 
+  content: "Emerald";
+  display: block;
+  top: 0;
+  right: 52px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #1AA580;
+  opacity: 0.6;
+}
+.product_area_05::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 88%;
+  background-color: #1AA580;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_05 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_05_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    6月
+----------------------------------- */
+/* 背景 */
+.product_area_06 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(165, 165, 165, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_06::before {
+  position: absolute; 
+  content: "Pearl";
+  display: block;
+  top: 0;
+  right: 72px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #212121;
+  opacity: 0.6;
+}
+.product_area_06::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 90%;
+  background-color: #212121;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_06 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_06_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    7月
+----------------------------------- */
+/* 背景 */
+.product_area_07 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(250, 119, 119, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_07::before {
+  position: absolute; 
+  content: "Ruby";
+  display: block;
+  top: 0;
+  right: 68px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #9A1616;
+  opacity: 0.6;
+}
+.product_area_07::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 90%;
+  background-color: #9A1616;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_07 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_07_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    8月
+----------------------------------- */
+/* 背景 */
+.product_area_08 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(65, 187, 32, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_08::before {
+  position: absolute; 
+  content: "Peridot";
+  display: block;
+  top: 0;
+  right: 60px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #155C01;
+  opacity: 0.6;
+}
+.product_area_08::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 90%;
+  background-color: #155C01;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_08 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_08_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    9月
+----------------------------------- */
+/* 背景 */
+.product_area_09 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(59, 59, 202, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_09::before {
+  position: absolute; 
+  content: "Sapphire";
+  display: block;
+  top: 0;
+  right: 50px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #090989;
+  opacity: 0.6;
+}
+.product_area_09::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 88%;
+  background-color: #090989;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_09 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_09_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    10月
+----------------------------------- */
+/* 背景 */
+.product_area_10 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(57, 177, 145, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_10::before {
+  position: absolute; 
+  content: "Tourmaline";
+  display: block;
+  top: 0;
+  right: 34px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #07A7AA;
+  opacity: 0.6;
+}
+.product_area_10::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 86%;
+  background-color: #07A7AA;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_10 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_10_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    11月
+----------------------------------- */
+/* 背景 */
+.product_area_11 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(199, 159, 65, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_11::before {
+  position: absolute; 
+  content: "Topaz";
+  display: block;
+  top: 0;
+  right: 64px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #8E7333;
+  opacity: 0.6;
+}
+.product_area_11::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 90%;
+  background-color: #8E7333;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_11 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_11_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
+
+/* ----------------------------------
+    12月
+----------------------------------- */
+/* 背景 */
+.product_area_12 {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  padding-top: 118px;
+  padding-bottom: 118px;
+  background-image: linear-gradient(90deg, rgba(57, 84, 167, 0.15) 10%, rgba(255, 255, 255, 0) 14%);
+  position: relative;
+}
+.product_area_12::before {
+  position: absolute; 
+  content: "Zircon";
+  display: block;
+  top: 0;
+  right: 64px;
+  transform: rotate(90deg);
+  font-size: 28px;
+  line-height: 1;
+  color: #3954A7;
+  opacity: 0.6;
+}
+.product_area_12::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 106px;
+  width: 2px;
+  height: 90%;
+  background-color: #3954A7;
+  opacity: 0.4;
+}
+/* 宝石画像（疑似） */
+.product_area_12 > span::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background-image: url("../img/birthstone_12_small.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 124px;
+  height: 124px;
+}
